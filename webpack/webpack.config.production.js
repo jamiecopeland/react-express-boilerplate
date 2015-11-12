@@ -6,6 +6,26 @@ import { BUILD_PATH, SRC_PATH } from '../config/projectPathConfig';
 import { JS_PATH, CSS_PATH } from '../config/publicFolderConfig';
 import webpackConfigBase from './webpack.config.base';
 
+
+export const jsLoader = {
+  exclude: /node_modules/,
+  loader: 'babel',
+  query: {
+    stage: 0
+  },
+  test: /\.js|jsx$/
+};
+
+export const styleLoader = {
+  test: /\.scss$/,
+  loader: ExtractTextPlugin.extract(
+    'style-loader',
+    'css-loader',
+    'autoprefixer-loader',
+    'sass-loader?outputStyle=compressed'
+  )
+};
+
 export default {
   entry: {
     main: path.join(SRC_PATH, 'client', 'Main.js')

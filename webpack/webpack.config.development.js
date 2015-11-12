@@ -6,6 +6,45 @@ import { APP_HOST, APP_PORT, WEBPACK_HOST, WEBPACK_PORT } from '../config/server
 import { JS_PATH, CSS_PATH, ASSETS_PATH } from '../config/publicFolderConfig';
 import webpackConfigBase from './webpack.config.base';
 
+export const jsLoader = {
+  exclude: /node_modules/,
+  loader: 'babel',
+  query: {
+    stage: 0,
+    env: {
+      development: {
+        plugins: ['react-transform'],
+        extra: {
+          'react-transform': {
+            transforms: [
+              {
+                transform: 'react-transform-hmr',
+                imports: ['react'],
+                locals: ['module']
+              },
+              {
+                transform: 'react-transform-catch-errors',
+                imports: ['react', 'redbox-react']
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  test: /\.js|jsx$/
+};
+
+export const styleLoader = {
+  test: /\.scss$/,
+  loaders: [
+    'style-loader',
+    'css-loader',
+    'autoprefixer-loader',
+    'sass-loader?outputStyle=compressed'
+  ]
+};
+
 export default {
   cache: true,
   debug: true,
@@ -24,43 +63,8 @@ export default {
   module: {
     preLoaders: webpackConfigBase.module.preLoaders,
     loaders: webpackConfigBase.module.loaders.concat([
-      {
-        exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          stage: 0,
-          env: {
-            development: {
-              plugins: ['react-transform'],
-              extra: {
-                'react-transform': {
-                  transforms: [
-                    {
-                      transform: 'react-transform-hmr',
-                      imports: ['react'],
-                      locals: ['module']
-                    },
-                    {
-                      transform: 'react-transform-catch-errors',
-                      imports: ['react', 'redbox-react']
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        },
-        test: /\.js|jsx$/
-      },
-      {
-        test: /\.scss$/,
-        loaders: [
-          'style-loader',
-          'css-loader',
-          'autoprefixer-loader',
-          'sass-loader?outputStyle=compressed'
-        ]
-      }
+      jsLoader,
+      styleLoader
     ])
   },
   plugins: [

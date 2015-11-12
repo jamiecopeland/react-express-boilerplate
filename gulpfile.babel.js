@@ -16,9 +16,16 @@ import { BUILD_PATH } from './config/projectPathConfig';
 
 gulp.task('startWebpackServer', bg('node', './webpack/server/webpackServerWrapper.js'));
 gulp.task('startAppServerNodemon', shell.task(path.normalize('node_modules/.bin/nodemon src/server/appServerWrapper.js')));
+
+// Main development task
 gulp.task('startDevelopment', (callback) => {
   runSequence('deletePublicFolder', 'startWebpackServer', 'startAppServerNodemon', callback);
 });
+
+// --------------------------------------------------
+// Testing tasks
+
+gulp.task('startKarma', shell.task('karma start'));
 
 // --------------------------------------------------
 // Production tasks
@@ -29,6 +36,8 @@ gulp.task('build', (callback) => {
   return runSequence('deletePublicFolder', 'buildPublicFolder', callback);
 });
 gulp.task('startAppServer', bg('node', './src/server/appServerWrapper.js'));
+
+// Main production task
 gulp.task('startProduction', (callback) => {
   return runSequence('build', 'startAppServer', callback);
 });
