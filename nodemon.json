@@ -1,0 +1,9 @@
+{
+  "restartable": "rs",
+  "verbose": false,
+  "watch": [
+    "webpack/**/*",
+    "src/server/**/*",
+    "src/client/index.html"
+  ]
+}
