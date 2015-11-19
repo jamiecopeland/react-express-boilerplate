@@ -25,9 +25,9 @@ function initializeExpress(indexFileString) {
   });
 
   app.listen(APP_PORT, () => {
-    console.log(`******************`);
+    console.log(`**********`);
     console.log(`App server started at: http://${APP_HOST}:${APP_PORT}`);
-    console.log(`******************`);
+    console.log(`**********`);
 
   });
 
