@@ -9,7 +9,7 @@ import shell from 'gulp-shell';
 import del from 'del';
 
 import { buildPublicFolder } from './webpack/webpackUtils';
-import { BUILD_PATH } from './config/projectPathConfig';
+import { BUILD_FOLDER_PATH } from './config/projectPathConfig';
 
 // --------------------------------------------------
 // Development tasks
@@ -30,7 +30,7 @@ gulp.task('startKarma', shell.task('karma start'));
 // --------------------------------------------------
 // Production tasks
 
-gulp.task('deletePublicFolder', () => { return del([BUILD_PATH]); });
+gulp.task('deletePublicFolder', () => { return del([BUILD_FOLDER_PATH]); });
 gulp.task('buildPublicFolder', buildPublicFolder);
 gulp.task('build', (callback) => {
   return runSequence('deletePublicFolder', 'buildPublicFolder', callback);

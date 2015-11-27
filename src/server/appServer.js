@@ -5,14 +5,14 @@ import path from 'path';
 import handlebars from 'handlebars';
 import async from 'async';
 
-import { BUILD_PATH, SRC_PATH } from '../../config/projectPathConfig';
+import { BUILD_FOLDER_PATH, SRC_FOLDER_PATH } from '../../config/projectPathConfig';
 import { APP_HOST, APP_PORT, WEBPACK_HOST, WEBPACK_PORT } from '../../config/serverAddressConfig';
-import { JS_PATH, CSS_PATH } from '../../config/publicFolderConfig';
+import { JS_FOLDER_PATH, CSS_FOLDER_PATH } from '../../config/publicFolderConfig';
 
 function initializeExpress(indexFileString) {
   const app = express();
 
-  app.use(express.static(BUILD_PATH));
+  app.use(express.static(BUILD_FOLDER_PATH));
 
   app.use(cors());
 

@@ -2,8 +2,8 @@ import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-import { BUILD_PATH, SRC_PATH } from '../config/projectPathConfig';
-import { JS_PATH, CSS_PATH } from '../config/publicFolderConfig';
+import { BUILD_FOLDER_PATH, SRC_FOLDER_PATH } from '../config/projectPathConfig';
+import { JS_FOLDER_PATH, CSS_FOLDER_PATH, MAIN_JS_FILE_NAME, MAIN_CSS_FILE_NAME, HASH_SEPARATOR } from '../config/publicFolderConfig';
 import webpackConfigBase from './webpack.config.base';
 
 
@@ -28,11 +28,11 @@ export const styleLoader = {
 
 export default {
   entry: {
-    main: path.join(SRC_PATH, 'client', 'Main.js')
+    [MAIN_JS_FILE_NAME]: path.join(SRC_FOLDER_PATH, 'client', 'Main.js')
   },
   output: {
-    path: `${BUILD_PATH}`,
-    filename: `${JS_PATH}/[name]--[hash].js`
+    path: `${BUILD_FOLDER_PATH}`,
+    filename: `${JS_FOLDER_PATH}/[name]${HASH_SEPARATOR}[hash].js`
   },
   module: {
     preLoaders: webpackConfigBase.module.preLoaders,
@@ -57,7 +57,7 @@ export default {
     ])
   },
   plugins: [
-    new ExtractTextPlugin(`${CSS_PATH}/main--[hash].css`),
+    new ExtractTextPlugin(`${CSS_FOLDER_PATH}/${MAIN_CSS_FILE_NAME}${HASH_SEPARATOR}[hash].css`),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true
     })

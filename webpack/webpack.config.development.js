@@ -1,9 +1,9 @@
 import path from 'path';
 import webpack from 'webpack';
 
-import { ROOT_PATH, SRC_PATH, BUILD_PATH, NODE_MODULES_PATH } from '../config/projectPathConfig';
+import { ROOT_FOLDER_PATH, SRC_FOLDER_PATH, BUILD_FOLDER_PATH, NODE_MODULES_FOLDER_PATH } from '../config/projectPathConfig';
 import { APP_HOST, APP_PORT, WEBPACK_HOST, WEBPACK_PORT } from '../config/serverAddressConfig';
-import { JS_PATH, CSS_PATH, ASSETS_PATH } from '../config/publicFolderConfig';
+import { JS_FOLDER_PATH, CSS_FOLDER_PATH, ASSETS_FOLDER_PATH } from '../config/publicFolderConfig';
 import webpackConfigBase from './webpack.config.base';
 
 export const jsLoader = {
@@ -52,13 +52,13 @@ export default {
   entry: {
     main: [
       `webpack-hot-middleware/client?path=http://${WEBPACK_HOST}:${WEBPACK_PORT}/__webpack_hmr`,
-      path.join(SRC_PATH, 'client', 'Main.js')
+      path.join(SRC_FOLDER_PATH, 'client', 'Main.js')
     ]
   },
   output: {
-    path: BUILD_PATH,
+    path: BUILD_FOLDER_PATH,
     filename: '[name].js',
-    publicPath: `http://${WEBPACK_HOST}:${WEBPACK_PORT}${JS_PATH}/`
+    publicPath: `http://${WEBPACK_HOST}:${WEBPACK_PORT}${JS_FOLDER_PATH}/`
   },
   module: {
     preLoaders: webpackConfigBase.module.preLoaders,

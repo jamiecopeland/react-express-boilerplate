@@ -1,6 +1,6 @@
 import {
-  ROOT_PATH,
-  SRC_PATH
+  ROOT_FOLDER_PATH,
+  SRC_FOLDER_PATH
 } from '../config/projectPathConfig';
 
 export default {
@@ -8,7 +8,7 @@ export default {
     preLoaders: [
       {
         test: /\.js|jsx$/,
-        include: SRC_PATH,
+        include: SRC_FOLDER_PATH,
         loader: 'eslint-loader'
       }
     ],
@@ -22,6 +22,6 @@ export default {
   resolve: {
     extensions: ['', '.js', '.jsx', '.json'],
     modulesDirectories: ['src', 'assets', 'node_modules'],
-    root: ROOT_PATH
+    root: ROOT_FOLDER_PATH
   }
 }
