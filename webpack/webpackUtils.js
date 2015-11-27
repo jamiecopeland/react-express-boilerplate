@@ -2,10 +2,42 @@ import gutil from 'gulp-util';
 import webpack from 'webpack';
 import path from 'path';
 import fs from 'fs';
+import async from 'async';
 
-import { BUILD_FOLDER_PATH } from '../config/projectPathConfig';
-import { JS_FOLDER_PATH, CSS_FOLDER_PATH } from '../config/publicFolderConfig';
+import { BUILD_FOLDER_PATH, SRC_FOLDER_PATH } from '../config/projectPathConfig';
+import { JS_FOLDER_PATH, CSS_FOLDER_PATH, MAIN_JS_FILE_NAME, MAIN_CSS_FILE_NAME, HASH_SEPARATOR } from '../config/publicFolderConfig';
 import webpackConfigDevelopment from './webpack.config.production';
+
+export default function loadIndexCSS(outerCallback) {
+  async.series({
+    resetCSS: (callback) => {
+      fs.readFile(`${SRC_FOLDER_PATH}/styles/reset.css`, 'utf8', function read(err, data) {
+        callback(err, data);
+      });
+    },
+
+    preloaderCSS: (callback) => {
+      fs.readFile(`${SRC_FOLDER_PATH}/styles/preloader.css`, 'utf8', function read(err, data) {
+        callback(err, data);
+      });
+    }
+  },
+  (err, result) => {
+    outerCallback(err, result);
+  });
+}
+
+
+
+
+
+
+
+
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+
+import Index from '../src/server/components/index/Index.jsx';
 
 export function buildPublicFolder(callback) {
 
@@ -33,4 +65,5 @@ export function buildPublicFolder(callback) {
     });
 
   });
+
 };
