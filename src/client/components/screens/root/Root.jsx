@@ -5,13 +5,17 @@ require('./Root.scss');
 
 export default class Root extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
+  static propTypes = {
+    children: React.PropTypes.node
+  };
 
   render() {
+    const {children} = this.props;
     return (
-      <div className="Root">Root</div>
+      <div className="Root">
+        <h1>Root</h1>
+        {children}
+      </div>
     );
   }
 
