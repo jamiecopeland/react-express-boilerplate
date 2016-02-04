@@ -83,6 +83,7 @@
     "phantomjs": "^1.9.18",
     "phantomjs-polyfill": "0.0.1",
     "postcss-loader": "^0.8.0",
+    "precss": "^1.4.0",
     "purdy": "^1.4.1",
     "react-addons-test-utils": "^0.14.2",
     "react-transform-catch-errors": "^1.0.0",

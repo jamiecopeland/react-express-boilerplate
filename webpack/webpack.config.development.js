@@ -43,7 +43,7 @@ export const styleLoader = {
     'style-loader',
     'css-loader',
     'postcss-loader',
-    'sass-loader?outputStyle=compressed'
+    // 'sass-loader?outputStyle=compressed'
   ]
 };
 

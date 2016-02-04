@@ -1,4 +1,5 @@
 import autoprefixer from 'autoprefixer';
+import precss from 'precss';
 
 import {
   ROOT_FOLDER_PATH,
@@ -22,7 +23,7 @@ export default {
     ]
   },
   postcss: [
-    autoprefixer
+    autoprefixer, precss
   ],
   resolve: {
     extensions: ['', '.js', '.jsx', '.json'],
