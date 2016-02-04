@@ -1,10 +1,10 @@
 import path from 'path';
 import webpack from 'webpack';
 
-import { ROOT_FOLDER_PATH, SRC_FOLDER_PATH, BUILD_FOLDER_PATH, NODE_MODULES_FOLDER_PATH } from '../config/projectPathConfig';
-import { APP_HOST, APP_PORT, WEBPACK_HOST, WEBPACK_PORT } from '../config/serverAddressConfig';
-import { JS_FOLDER_PATH, CSS_FOLDER_PATH, ASSETS_FOLDER_PATH } from '../config/publicFolderConfig';
-import webpackConfigBase from './webpack.config.base';
+import {ROOT_FOLDER_PATH, SRC_FOLDER_PATH, BUILD_FOLDER_PATH, NODE_MODULES_FOLDER_PATH} from '../config/projectPathConfig';
+import {APP_HOST, APP_PORT, WEBPACK_HOST, WEBPACK_PORT} from '../config/serverAddressConfig';
+import {JS_FOLDER_PATH, CSS_FOLDER_PATH, ASSETS_FOLDER_PATH} from '../config/publicFolderConfig';
+import webpackConfigBase, {styleLoader} from './webpack.config.base';
 
 export const jsLoader = {
   test: /\.js$/,
@@ -35,16 +35,6 @@ export const jsLoader = {
       }
     }
   },
-};
-
-export const styleLoader = {
-  test: /\.scss$/,
-  loaders: [
-    'style-loader',
-    'css-loader',
-    'postcss-loader',
-    // 'sass-loader?outputStyle=compressed'
-  ]
 };
 
 export default {

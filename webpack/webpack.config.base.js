@@ -6,6 +6,16 @@ import {
   SRC_FOLDER_PATH
 } from '../config/projectPathConfig';
 
+export const styleLoader = {
+  test: /\.scss$/,
+  loaders: [
+    'style-loader',
+    'css-loader',
+    'postcss-loader',
+    // 'sass-loader?outputStyle=compressed'
+  ]
+};
+
 export default {
   module: {
     preLoaders: [
