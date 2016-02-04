@@ -24,7 +24,7 @@ export default class Index extends React.Component {
     return (
       <html>
         <head>
-          <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+          <meta httpEquiv="Content-type" content="text/html; charset=utf-8"/>
           <title>{this.props.title}</title>
           <style rel="stylesheet">
             {this.props.internalCSS}
