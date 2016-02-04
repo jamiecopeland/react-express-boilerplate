@@ -18,7 +18,6 @@ app.use(webpackHot(compiler));
 
 app.listen(WEBPACK_PORT, () => {
   console.log(`**********`);
-  console.log(`Webpack server started at http://${WEBPACK_HOST}:${WEBPACK_PORT}`);
+  console.log(`Webpack server started`);
   console.log(`**********`);
-
 });
