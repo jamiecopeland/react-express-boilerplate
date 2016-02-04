@@ -6,14 +6,14 @@ import { BUILD_FOLDER_PATH, SRC_FOLDER_PATH } from '../config/projectPathConfig'
 import { JS_FOLDER_PATH, CSS_FOLDER_PATH, MAIN_JS_FILE_NAME, MAIN_CSS_FILE_NAME, HASH_SEPARATOR } from '../config/publicFolderConfig';
 import webpackConfigBase from './webpack.config.base';
 
-
 export const jsLoader = {
+  test: /\.js$/,
   exclude: /node_modules/,
   loader: 'babel',
   query: {
-    stage: 0
-  },
-  test: /\.js|jsx$/
+    cacheDirectory: true,
+    presets: ['es2015', 'stage-0', 'react']
+  }
 };
 
 export const styleLoader = {

@@ -1,3 +1,3 @@
-require('babel/register')({optional: ['es7']});
+require('babel-core/register')();
 
 require('./appServer');

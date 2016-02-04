@@ -7,32 +7,34 @@ import { JS_FOLDER_PATH, CSS_FOLDER_PATH, ASSETS_FOLDER_PATH } from '../config/p
 import webpackConfigBase from './webpack.config.base';
 
 export const jsLoader = {
+  test: /\.js$/,
   exclude: /node_modules/,
   loader: 'babel',
   query: {
-    stage: 0,
+    presets: ['es2015', 'stage-0', 'react'],
     env: {
       development: {
-        plugins: ['react-transform'],
-        extra: {
-          'react-transform': {
-            transforms: [
-              {
-                transform: 'react-transform-hmr',
-                imports: ['react'],
-                locals: ['module']
-              },
-              {
-                transform: 'react-transform-catch-errors',
-                imports: ['react', 'redbox-react']
-              }
-            ]
-          }
-        }
+        plugins: [
+          [
+            'react-transform',
+            {
+              transforms: [
+                {
+                  transform: 'react-transform-hmr',
+                  imports: ['react'],
+                  locals: ['module']
+                },
+                {
+                  transform: 'react-transform-catch-errors',
+                  imports: ['react', 'redbox-react']
+                }
+              ]
+            }
+          ]
+        ]
       }
     }
   },
-  test: /\.js|jsx$/
 };
 
 export const styleLoader = {

@@ -42,7 +42,7 @@ gulp.task('startProduction', (callback) => {
   return runSequence('build', 'startAppServer', callback);
 });
 
-// --------------------------------------------------
-// Default
+// // --------------------------------------------------
+// // Default
 
 gulp.task('default', ['startDevelopment']);

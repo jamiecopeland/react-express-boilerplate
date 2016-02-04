@@ -1,4 +1,4 @@
-require('babel/register')({ stage: 0});
+require('babel-core/register')();
 
 var webpack = require('webpack');
 var webpackBaseConfig = require('./webpack/webpack.config.base.js');
