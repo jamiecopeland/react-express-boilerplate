@@ -37,7 +37,7 @@ export default function loadIndexCSS(outerCallback) {
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import Index from '../src/server/components/index/Index.jsx';
+import Index from '../src/server/components/index/Index.js';
 
 export function buildPublicFolder(callback) {
 
