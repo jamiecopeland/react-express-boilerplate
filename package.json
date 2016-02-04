@@ -1,16 +1,30 @@
 {
   "name": "react-express-boilerplate",
+  "version": "0.0.1",
+  "description": "React/Express Boilerplate",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jamiecopeland/react-express-boilerplate.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "express"
+  ],
   "authors": [
     "Jamie Copeland"
   ],
-  "description": "",
-  "scripts": {},
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jamiecopeland/react-express-boilerplate/issues"
+  },
+  "homepage": "https://github.com/jamiecopeland/react-express-boilerplate",
   "engines": {
     "node": "4.2.x"
   },
   "dependencies": {
     "async": "^1.5.0",
-    "axios": "^0.7.0",
     "body-parser": "^1.12.4",
     "classnames": "^2.1.1",
     "cors": "^2.6.0",
