@@ -21,7 +21,7 @@ export const styleLoader = {
   loader: ExtractTextPlugin.extract(
     'style-loader',
     'css-loader',
-    'autoprefixer-loader',
+    'postcss-loader',
     'sass-loader?outputStyle=compressed'
   )
 };
@@ -31,36 +31,25 @@ export default {
     [MAIN_JS_FILE_NAME]: path.join(SRC_FOLDER_PATH, 'client', 'Main.js')
   },
   output: {
-    path: `${BUILD_FOLDER_PATH}`,
+    path: BUILD_FOLDER_PATH,
     filename: `${JS_FOLDER_PATH}/[name]${HASH_SEPARATOR}[hash].js`
   },
   module: {
     preLoaders: webpackConfigBase.module.preLoaders,
     loaders: webpackConfigBase.module.loaders.concat([
-      {
-        exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          stage: 0
-        },
-        test: /\.js|jsx$/
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader',
-          'autoprefixer-loader',
-          'sass-loader?outputStyle=compressed'
-        )
-      }
+      jsLoader,
+      styleLoader
     ])
   },
+  postcss: webpackConfigBase.postcss,
   plugins: [
     new ExtractTextPlugin(`${CSS_FOLDER_PATH}/${MAIN_CSS_FILE_NAME}${HASH_SEPARATOR}[hash].css`),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true
-    })
+    }),
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': '"production"'
+    }),
   ],
   resolve: webpackConfigBase.resolve
 }

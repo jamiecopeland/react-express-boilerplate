@@ -44,8 +44,7 @@
     "redux-thunk": "^1.0.0"
   },
   "devDependencies": {
-    "autoprefixer": "^6.0.2",
-    "autoprefixer-loader": "^3.1.0",
+    "autoprefixer": "^6.3.1",
     "babel-core": "^6.4.0",
     "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.1",
@@ -83,6 +82,7 @@
     "nodemon": "<1.8.0",
     "phantomjs": "^1.9.18",
     "phantomjs-polyfill": "0.0.1",
+    "postcss-loader": "^0.8.0",
     "purdy": "^1.4.1",
     "react-addons-test-utils": "^0.14.2",
     "react-transform-catch-errors": "^1.0.0",

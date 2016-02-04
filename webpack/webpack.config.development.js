@@ -42,7 +42,7 @@ export const styleLoader = {
   loaders: [
     'style-loader',
     'css-loader',
-    'autoprefixer-loader',
+    'postcss-loader',
     'sass-loader?outputStyle=compressed'
   ]
 };
@@ -69,6 +69,7 @@ export default {
       styleLoader
     ])
   },
+  postcss: webpackConfigBase.postcss,
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),

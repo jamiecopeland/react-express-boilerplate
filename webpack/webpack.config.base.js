@@ -1,3 +1,5 @@
+import autoprefixer from 'autoprefixer';
+
 import {
   ROOT_FOLDER_PATH,
   SRC_FOLDER_PATH
@@ -19,6 +21,9 @@ export default {
       }
     ]
   },
+  postcss: [
+    autoprefixer
+  ],
   resolve: {
     extensions: ['', '.js', '.jsx', '.json'],
     modulesDirectories: ['src', 'assets', 'node_modules'],
