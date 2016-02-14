@@ -38,7 +38,7 @@ function initializeExpress(indexFileString) {
 // Initialization
 
 import createIndexFile from './utils/createIndexFile';
-createIndexFile(path.normalize(path.join(__dirname, '/../client/index.html')), (err, indexFileString) => {
+createIndexFile((err, indexFileString) => {
   if(err) {
     throw(new Error(`Couldn't create index file: ${err}`));
   } else {

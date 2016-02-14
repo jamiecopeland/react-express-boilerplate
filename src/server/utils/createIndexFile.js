@@ -9,7 +9,7 @@ import { APP_HOST, APP_PORT, WEBPACK_HOST, WEBPACK_PORT } from '../../../config/
 import { JS_FOLDER_PATH, CSS_FOLDER_PATH, MAIN_JS_FILE_NAME, MAIN_CSS_FILE_NAME, HASH_SEPARATOR } from '../../../config/publicFolderConfig';
 import Index from '../components/index/index';
 
-export default function createIndexFile(indexTemplatePath, outerCallback) {
+export default function createIndexFile(outerCallback) {
 
   async.waterfall([
 
