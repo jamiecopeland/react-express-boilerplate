@@ -14,4 +14,13 @@ const createStoreWithMiddleware = applyMiddleware(
 export const initialState = {};
 
 const store = createStoreWithMiddleware(appReducer, initialState);
+
+// Enable Webpack hot module replacement for reducers
+if (module.hot) {
+  module.hot.accept('./reducers/appReducer', () => {
+    const nextRootReducer = require('./reducers/appReducer');
+    store.replaceReducer(nextRootReducer.default);
+  });
+}
+
 export default store;
