@@ -1,7 +1,7 @@
 import React from 'react';
 
-import 'styles/global.scss';
-import './Root.scss';
+import 'styles/global.css';
+import './Root.css';
 
 export default class Root extends React.Component {
 

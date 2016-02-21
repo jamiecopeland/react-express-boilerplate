@@ -7,7 +7,7 @@ import {
 } from '../config/projectPathConfig';
 
 export const styleLoader = {
-  test: /\.scss$/,
+  test: /\.css$/,
   loaders: [
     'style-loader',
     'css-loader',

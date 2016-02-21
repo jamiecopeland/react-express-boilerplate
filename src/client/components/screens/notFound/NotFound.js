@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './NotFound.scss';
+import './NotFound.css';
 
 export default class NotFound extends React.Component {
 
