@@ -1,17 +1,19 @@
-import { createStore, applyMiddleware } from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
+import {Map} from 'immutable';
 
 import appReducer from 'client/reducers/appReducer';
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware,
   createLogger({
-    collapsed: true
+    collapsed: true,
+    stateTransformer: state => state.toJS()
   })
 )(createStore);
 
-export const initialState = {};
+export const initialState = Map({});
 
 const store = createStoreWithMiddleware(appReducer, initialState);
 

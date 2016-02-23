@@ -1,5 +1,8 @@
-import { handleActions } from 'redux-actions';
+import {handleActions} from 'redux-actions';
+import {Map} from 'immutable';
 
-export default handleActions({
+export default (state, action) => {
+  return Map({
 
-}, {});
+  });
+}
