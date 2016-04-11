@@ -1,22 +1,18 @@
 import React from 'react';
 
-import 'styles/global.css';
+import '../../../styles/reset.css';
+import '../../../styles/global.css';
 import './Root.css';
 
-export default class Root extends React.Component {
+const Root = ({ children }) => (
+  <div className="Root">
+    <h1>Root</h1>
+    {children}
+  </div>
+);
 
-  static propTypes = {
-    children: React.PropTypes.node
-  };
+Root.propTypes = {
+  children: React.PropTypes.node,
+};
 
-  render() {
-    const {children} = this.props;
-    return (
-      <div className="Root">
-        <h1>Root</h1>
-        {children}
-      </div>
-    );
-  }
-
-}
+export default Root;

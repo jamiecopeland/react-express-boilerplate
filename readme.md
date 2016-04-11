@@ -3,20 +3,23 @@ A boilerplate for React/Express applications with all the bells and whistles.
 
 #### Development environment
 - [Webpack dev server](https://github.com/webpack/webpack-dev-server)
-- [Hot module replacement](https://webpack.github.io/docs/hot-module-replacement.html) (via [React transform HMR](https://github.com/gaearon/react-transform-hmr))
+- [Vanilla Hot module replacement](https://webpack.github.io/docs/hot-module-replacement.html)
+- [ESLint](https://github.com/eslint/eslint) ( [Airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) )
 
 #### Application architecture
-- [React Router](https://github.com/rackt/react-router)
 - [Redux](https://github.com/rackt/redux)
     - [Redux Actions](https://github.com/acdlite/redux-actions)
     - [Redux Thunk](https://github.com/gaearon/redux-thunk)
     - [React Redux](https://github.com/rackt/react-redux)
+- [React Router](https://github.com/reactjs/react-router-redux)
+- [Immutable](https://github.com/facebook/immutable-js/)
 
 #### Testing
 - [Karma](https://github.com/karma-runner/karma)
 - [Mocha](https://github.com/mochajs/mocha)
 - [Chai](https://github.com/chaijs/chai)
 - [Sinon](https://github.com/sinonjs/sinon)
+- [Enzyme](https://github.com/airbnb/enzyme)
 
 ## Installation
 ```
@@ -29,18 +32,18 @@ npm install
 Run the development server:
 
 ```
-gulp
+npm start
 ```
 
-Start Karma test runner:
+Start the test runner:
 
 ```
-gulp startKarma
+npm test
 ```
 
 ## Production
 Build and run the production server:
 
 ```
-gulp startProduction
+npm run startProduction
 ```

@@ -1,43 +1,29 @@
 import React from 'react';
 
-function renderJsInclude(jsPaths) {
-  return jsPaths.map((jsPath) => (
-    <script key={jsPath} src={jsPath} />
-  ))
-}
+const Index = ({ cssPaths, jsPaths, title }) => (
+  <html>
+    <head>
+      <meta httpEquiv="Content-type" content="text/html; charset=utf-8" />
+      <title>{title}</title>
+      {
+        cssPaths
+        ? cssPaths.map((cssPath) => (<link key={cssPath} rel="stylesheet" href={cssPath} />))
+        : null
+      }
+    </head>
+    <body>
+      <div id="app-dom-hook"></div>
+      {
+        jsPaths.map((jsPath) => (<script key={jsPath} src={jsPath} />))
+      }
+    </body>
+  </html>
+);
 
-function renderCssInclude(cssPaths) {
-  return cssPaths ? cssPaths.map((cssPath) => (
-       <link key={cssPath} rel="stylesheet" href={cssPath}/>
-     )) : null;
-}
+Index.propTypes = {
+  title: React.PropTypes.string,
+  jsPaths: React.PropTypes.array,
+  cssPaths: React.PropTypes.array,
+};
 
-export default class Index extends React.Component {
-
-  static propTypes = {
-    title: React.PropTypes.string,
-    jsPaths: React.PropTypes.array,
-    cssPaths: React.PropTypes.array,
-    internalCSS: React.PropTypes.string
-  };
-
-  render() {
-    return (
-      <html>
-        <head>
-          <meta httpEquiv="Content-type" content="text/html; charset=utf-8"/>
-          <title>{this.props.title}</title>
-          <style rel="stylesheet">
-            {this.props.internalCSS}
-          </style>
-          {renderCssInclude(this.props.cssPaths)}
-        </head>
-        <body>
-          <div id="app-dom-hook"></div>
-          {renderJsInclude(this.props.jsPaths)}
-        </body>
-      </html>
-    );
-  }
-
-}
+export default Index;

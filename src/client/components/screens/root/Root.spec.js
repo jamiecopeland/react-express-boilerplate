@@ -1,23 +1,17 @@
-"use strict"
-
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { expect } from 'chai';
-import { renderIntoDocument, Simulate } from 'react-addons-test-utils';
-import sinon from 'sinon/pkg/sinon';
+import { shallow } from 'enzyme';
 
 import Root from './Root';
 
-describe('Root', function(){
-  let renderer;
-  let dom;
+describe('Root', () => {
+  let wrapper;
 
   beforeEach(() => {
-    renderer = renderIntoDocument(<Root/>);
-    dom = ReactDOM.findDOMNode(renderer);
-  })
+    wrapper = shallow(<Root />);
+  });
 
-  it('should have a root level element with a class name Root', function(){
-    expect(dom.getAttribute('class')).to.equal('Root');
+  it('should have correct style class applied', () => {
+    expect(wrapper.find('.Root')).to.have.length(1);
   });
 });

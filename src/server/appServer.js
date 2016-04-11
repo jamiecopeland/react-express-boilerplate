@@ -1,47 +1,32 @@
-import express from 'express';
-import cors from 'cors';
-import fs from 'fs';
-import path from 'path';
-import async from 'async';
-import ip from 'ip';
+import Express from 'express';
 
-import { BUILD_FOLDER_PATH, SRC_FOLDER_PATH } from '../../config/projectPathConfig';
-import { APP_HOST, APP_PORT, WEBPACK_HOST, WEBPACK_PORT } from '../../config/serverAddressConfig';
-import { JS_FOLDER_PATH, CSS_FOLDER_PATH, MAIN_JS_FILE_NAME, MAIN_CSS_FILE_NAME } from '../../config/publicFolderConfig';
+import {
+  APP_SERVER_HOST,
+  APP_SERVER_PORT,
+  BUILD_FOLDER_PATH,
+} from '../../config/server';
+import { createIndexFile } from './utils/indexFileUtils';
 
-function initializeExpress(indexFileString) {
-  const app = express();
-  const indexWithDocType = `<!DOCTYPE html>${indexFileString}`;
+const app = new Express();
 
-  app.use(express.static(BUILD_FOLDER_PATH));
+app.use(Express.static(BUILD_FOLDER_PATH));
 
-  app.use(cors());
+app.get('*', (req, res) => {
+  createIndexFile('React Express Boilerplate')
+    .then((fileString) => {
+      res.send(fileString);
+    })
+    .catch((err) => {
+      res.send('Error creating index file', err);
+    });
+});
 
-  app.get('/api/message', (req, res) => {
-    res.json({message: 'hello'});
-  });
-
-  app.get('*', (req, res) => {
-    res.send(indexWithDocType);
-  });
-
-  app.listen(APP_PORT, () => {
-    console.log(`**********`);
-    console.log(`App server started at: http://${APP_HOST}:${APP_PORT}`);
-    console.log(`**********`);
-  });
-
-  return app;
-}
-
-// --------------------------------------------------
-// Initialization
-
-import createIndexFile from './utils/createIndexFile';
-createIndexFile((err, indexFileString) => {
-  if(err) {
-    throw(new Error(`Couldn't create index file: ${err}`));
+app.listen(APP_SERVER_PORT, (error) => {
+  if (error) {
+    console.error(error); // eslint-disable-line
   } else {
-    initializeExpress(indexFileString);
+    console.log('\nApp server running at:'); // eslint-disable-line
+    console.info(`http://${APP_SERVER_HOST}:${APP_SERVER_PORT}`); // eslint-disable-line
+    console.log('🚀  🚀  🚀  🚀  🚀  🚀  🚀  🚀\n'); // eslint-disable-line
   }
 });
