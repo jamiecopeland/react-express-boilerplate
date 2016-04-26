@@ -1,6 +1,10 @@
 {
-  "bugs": {
-    "url": "https://github.com/jamiecopeland/react-express-boilerplate/issues"
+  "name": "react-express-boilerplate",
+  "version": "0.1.0",
+  "description": "React / Express Boilerplate",
+  "main": "src/server/appServer.js",
+  "directories": {
+    "test": "test"
   },
   "dependencies": {
     "babel-polyfill": "^6.3.14",
@@ -18,7 +22,6 @@
     "redux-logger": "^2.4.0",
     "redux-thunk": "^1.0.3"
   },
-  "description": "React/Express boilerplate",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.3.15",
@@ -63,23 +66,22 @@
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.2.0"
   },
-  "homepage": "https://github.com/jamiecopeland/react-express-boilerplate",
-  "keywords": [
-    "react",
-    "redux",
-    "express",
-    "boilerplate"
-  ],
-  "license": "MIT",
-  "name": "React/Express Boilerplate",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jamiecopeland/react-express-boilerplate"
-  },
   "scripts": {
     "start": "gulp startDevelopment",
     "startProduction": "gulp startProduction",
     "test": "karma start"
   },
-  "version": "0.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamiecopeland/react-express-boilerplate.git"
+  },
+  "keywords": [
+    "React"
+  ],
+  "author": "Jamie Copeland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jamiecopeland/react-express-boilerplate/issues"
+  },
+  "homepage": "https://github.com/jamiecopeland/react-express-boilerplate#readme"
 }
