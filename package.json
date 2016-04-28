@@ -2,7 +2,7 @@
   "name": "react-express-boilerplate",
   "version": "0.1.0",
   "description": "React / Express Boilerplate",
-  "main": "src/server/appServer.js",
+  "main": "src/server/index.js",
   "directories": {
     "test": "test"
   },

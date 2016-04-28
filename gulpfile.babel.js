@@ -48,7 +48,7 @@ export function buildPublicFolder(callback) {
 
 gulp.task('startWebpackServer', bg('node', './webpack/webpackServerWrapper.js'));
 gulp.task('startDevelopmentServer',
-  shell.task(path.normalize(`NODE_ENV=${DEVELOPMENT} nodemon src/server/appServerWrapper.js`)));
+  shell.task(path.normalize(`NODE_ENV=${DEVELOPMENT} nodemon src/server/indexWrapper.js`)));
 gulp.task('startDevelopment',
   callback => runSequence('deletePublicFolder', 'startWebpackServer', 'startDevelopmentServer', callback)); // eslint-disable-line
 
@@ -59,5 +59,5 @@ gulp.task('deletePublicFolder', () => del([BUILD_FOLDER_PATH]));
 gulp.task('buildPublicFolder', buildPublicFolder);
 gulp.task('build', (callback) => runSequence('deletePublicFolder', 'buildPublicFolder', callback));
 gulp.task('startProductionServer',
-  shell.task(path.normalize(`NODE_ENV=${PRODUCTION} node src/server/appServerWrapper.js`)));
+  shell.task(path.normalize(`NODE_ENV=${PRODUCTION} node src/server/indexWrapper.js`)));
 gulp.task('startProduction', (callback) => runSequence('build', 'startProductionServer', callback));
